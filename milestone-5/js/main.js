@@ -187,11 +187,9 @@ createApp({
             this.activeContact = index;
         },
         sendMessageAndResponse(){
-            console.log(this.newMessage);
             if(this.newMessage.trim() !== ''){
                 const today = new Date().toLocaleString('en-US', { hour12: false}).replace(', ', ' ');
                 this.contacts[this.activeContact].messages.push(new Message(today, this.newMessage, 'sent'));
-                console.log('ho pishato');
                 this.newMessage = '';
                 setTimeout(()=>{
                     this.contacts[this.activeContact].messages.push(new Message(today, 'ok', 'received'));

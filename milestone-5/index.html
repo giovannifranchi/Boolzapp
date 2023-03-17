@@ -21,10 +21,10 @@
     <!-- Vue app div -->
     <div id="app">
         <!-- Background Header -->
-        <header id="background-header" @click.capture="dropDown('')"></header>
+        <header id="background-header" @click="dropDown('')"></header>
         <!-- /Background Header -->
         <!-- Background Main -->
-        <main id="background-main" @click.capture="dropDown('')">
+        <main id="background-main" @click="dropDown('')">
             <!-- App Container -->
             <div class="app-container">
                 <!-- Aside -->
@@ -146,7 +146,7 @@
                         <div class="message  d-flex" v-for="(message, index) in contacts[activeContact].messages" :class="(message.status === 'received') ? 'received': 'sent'">
                             <span class="message-text">{{message.message}}</span>
                             <div class="right-area-message">
-                                <a href="#" @click="dropDown(index)">
+                                <a href="#" @click.stop="dropDown(index)">
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-list" :class="(hasClicked && index === hasClikedIndex)? 'active': ''"  v-if="message.status === 'sent'">
