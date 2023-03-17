@@ -1,0 +1,324 @@
+@import url(utilities.css);
+
+/* 
+------------------
+Reset
+------------------
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 
+------------------
+General
+------------------
+*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #bcbec2;
+}
+
+a:hover {
+    color: #b0b1b1;
+}
+
+/* 
+------------------
+BackGrounds
+------------------
+*/
+
+#background-header {
+    height: 6.25rem;
+    background-color: #409789;
+}
+
+#background-main {
+    height: calc(100vh - 6.25rem);
+    background-color: #dadbd3;
+}
+
+/* 
+------------------
+App Container
+------------------
+*/
+
+.app-container {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    bottom: 3.125rem;
+    z-index: 200;
+    display: flex;
+}
+
+#aside-app {
+    width: 27rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-app {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 
+------------------
+Aside Contacts
+------------------
+*/
+
+#header-contacts {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625rem;
+    background-color: #eaeaea;
+    border-right: 1px solid lightgray ;
+}
+
+#main-contacts {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.header-options {
+    padding-right: 0.625rem;
+}
+
+.header-option {
+    font-size: 1.25rem;
+}
+
+.not-ban-area {
+    height: 6.25rem;
+    padding: 1.25rem;
+    background-color: #8ed9fa;
+}
+
+.bell-logo {
+    padding: 15px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 25px;
+}
+
+.bell-logo i {
+    color: #8ed9fa;
+}
+
+.not-ban-area .text-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    margin-left: 15px;
+}
+
+.not-ban-area .text-area a{
+    text-decoration: underline;
+    opacity: 0.7;
+    color: #000;
+}
+
+.not-ban-area .text-area a:hover {
+    opacity: 1;
+}
+
+.search-contacts {
+    height: 3.125rem;
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+.search-bar-container {
+    height: 100%;
+}
+
+.search-bar-container button {
+    width: auto;
+    padding: 5px 15px;
+    font-size: 16px;
+    border: 0;
+    background-color: #fff;
+    color: #a2a4a5;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.search-bar-container button:hover {
+    background-color: #ecedee;
+}
+
+.search-bar-container  input {
+    flex-grow: 1;
+    padding: 0 10px;
+    border: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.contacts-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: hidden;
+}
+
+.contacts-list {
+    overflow-y: auto;
+}
+
+.contacts-item {
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 1px solid lightgray;
+}
+
+.contact-img-container {
+    height: 60px;
+    width: 60px;
+}
+
+.contact-info {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.contact-info span {
+    font-weight: 300;
+}
+
+.message-time {
+    padding: 0 10px;
+    width: auto;
+    text-align: right;
+    font-size: 12px;
+}
+
+/* 
+--------------------
+Main App section
+--------------------
+*/
+
+#header-main {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625rem;
+    background-color: #eaeaea;
+}
+
+#header-main .main-users-img {
+    height: 50px;
+    width: 50px;
+}
+
+#main-main-app {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-image: url('/milestone-1/img/mine.jpg');
+    padding: 50px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#main-main-app .message{
+    height: auto;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+#main-main-app .message .message-text {
+    padding: 10px;
+}
+
+#main-main-app .message .message-time{
+    align-self: flex-end;
+    font-size: 10px;
+}
+
+.sent {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+
+.received {
+    background-color: #fff;
+    align-self: flex-start;
+}
+
+#footer-main {
+    height: 70px;
+    display: flex;
+    background-color: #eaeaea;
+    flex-shrink: 0;
+}
+
+#footer-main .left-area, .right-area {
+    padding: 20px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+#footer-main .mid-area {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+#footer-main .mid-area input {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 100%;
+    height: 60%;
+    border: 0;
+    padding-left: 10px;
+}
+
+#footer-main a {
+    color: #858686;
+}
+
+#footer-main a:hover {
+    color: #707070;
+}
+
+.active-contact {
+    background-color: rgb(230, 229, 229);
+}
+
+
+
+
