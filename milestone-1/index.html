@@ -87,12 +87,12 @@
                             <!-- Contacts List -->
                             <ul class="contacts-list">
                                 <!-- Contacts Item -->
-                                <li class="contacts-item d-flex" v-for="item in 10">
+                                <li class="contacts-item d-flex" v-for="(item, index) in contacts">
                                     <div class="contact-img-container">
-                                        <img src="img/avatar_1.jpg" alt="avatar 1" class="img-fluid">
+                                        <img :src="item.avatar" :alt="item.name" class="img-fluid">
                                     </div>
                                     <div class="contact-info">
-                                        <h3 class="contact-name">Michele</h3>
+                                        <h3 class="contact-name">{{item.name}}</h3>
                                         <span class="contacts-last-msg">ultimo messaggio inviato</span>
                                     </div>
                                     <div class="message-time">
