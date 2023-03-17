@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzap</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- /FontAwesome -->
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- /Google Font -->
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- /Style -->
+</head>
+<body>
+    <!-- Vue app div -->
+    <div id="app">
+        <!-- Background Header -->
+        <header id="background-header"></header>
+        <!-- /Background Header -->
+        <!-- Background Main -->
+        <main id="background-main">
+            <!-- App Container -->
+            <div class="app-container">
+                <!-- Aside -->
+                <aside id="aside-app">
+                    <!-- Header Contacts -->
+                    <header id="header-contacts">
+                        <!-- User Area -->
+                        <div class="user-area d-flex align-items-center">
+                            <div class="user-img">
+                                <img src="img/avatar_io.jpg" alt="user picture" class="img-fluid">
+                            </div>
+                            <h3 class="user-name ms-10">Sofia</h3>
+                        </div>
+                        <!-- User Area -->
+                        <!-- Header Options -->
+                        <ul class="header-options d-flex gapx-10 align-items-center">
+                            <li class="header-option">
+                                <a href="#">
+                                    <i class="fa-regular fa-circle"></i>
+                                </a>
+                            </li>
+                            <li class="header-option">
+                                <a href="#">
+                                    <i class="fa-solid fa-message"></i>
+                                </a>
+                            </li>
+                            <li class="header-option">
+                                <a href="#">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /Header Options -->
+                    </header>
+                    <!-- /Header Contacts -->
+                    <!-- Main Contacts -->
+                    <main id="main-contacts">
+                        <!-- Notifications banner Area -->
+                        <div class="not-ban-area d-flex">
+                            <div class="bell-logo">
+                                <i class="fa-regular fa-bell-slash"></i>
+                            </div>
+                            <div class="text-area">
+                                <h4>Ricevi notifiche di nuovi mesaggi</h4>
+                                <a href="#">Attiva le notifiche desktop</a>
+                            </div>
+                        </div>
+                        <!-- /Notifications banner Area -->
+                        <!-- Search Contacts -->
+                        <div class="search-contacts">
+                            <div class="search-bar-container d-flex">
+                                <button type="button">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                                <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchedInput" @keyup="searchContacts()">
+                            </div>
+                        </div>
+                        <!-- /Search Contacts -->
+                        <div class="contacts-container">
+                            <!-- Contacts List -->
+                            <ul class="contacts-list">
+                                <!-- Contacts Item -->
+                                <li class="contacts-item d-flex" v-for="(item, index) in searchContacts()" @click="changeActiveContact(index)" :class="(activeContact === index) ? 'active-contact': ''">
+                                    <div class="contact-img-container">
+                                        <img :src="item.avatar" :alt="item.name" class="img-fluid">
+                                    </div>
+                                    <div class="contact-info">
+                                        <h3 class="contact-name">{{item.name}}</h3>
+                                        <span class="contacts-last-msg">ultimo messaggio inviato</span>
+                                    </div>
+                                    <div class="message-time">
+                                        12:00
+                                    </div>
+                                </li>
+                            <!-- /Contacts List -->
+                            </ul>
+                        </div>
+                        <!-- Contacts List -->
+                    </main>
+                    <!-- /Main Contacts -->
+                </aside>
+                <!-- /Aside -->
+                <!-- Main App -->
+                <main id="main-app">
+                    <!-- Header Main -->
+                    <header id="header-main">
+                        <div class="left-area d-flex">
+                            <div class="main-users-img">
+                                <img src="img/avatar_1.jpg" alt="avatar 1" class="img-fluid">
+                            </div>
+                            <div class="contact-info d-flex justify-center flex-column">
+                                <h3 class="contact-name">Michele</h3>
+                                <span class="contacts-last-msg">ultimo messaggio inviato</span>
+                            </div>
+                        </div>
+                        <!-- Header Options -->
+                        <ul class="header-options d-flex gapx-10 align-items-center">
+                            <li class="header-option">
+                                <a href="#">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </a>
+                            </li>
+                            <li class="header-option">
+                                <a href="#">
+                                    <i class="fa-solid fa-paperclip"></i>
+                                </a>
+                            </li>
+                            <li class="header-option">
+                                <a href="#">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /Header Options -->
+                    </header>
+                    <!-- Header Main -->
+                    <!-- Main Main App -->
+                    <main id="main-main-app">
+                        <div class="message  d-flex" v-for="message in contacts[activeContact].messages" :class="(message.status === 'received') ? 'received': 'sent'">
+                            <span class="message-text">{{message.message}}</span>
+                            <span class="message-time">15:00</span>
+                        </div>
+                    </main>
+                    <!-- /Main Main App -->
+                    <!-- Footer Main -->
+                    <footer id="footer-main">
+                        <div class="left-area">
+                            <a href="#">
+                                <i class="fa-regular fa-face-smile"></i>
+                            </a>
+                        </div>
+                        <div class="mid-area">
+                            <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessageAndResponse">
+                        </div>
+                        <div class="right-area">
+                            <a href="#">
+                                <i class="fa-solid fa-microphone"></i>
+                            </a>
+                        </div>
+                    </footer>
+                    <!-- /Footer Main -->
+                </main>
+                <!-- Main-App -->
+            </div>
+            <!-- /App Container -->
+        </main>
+        <!-- /Background Main -->
+    </div>
+    <!-- /Vue app div -->
+
+
+    <!-- VUE js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- /VUE js -->
+    <!-- Main Js -->
+    <script src="js/main.js"></script>
+    <!-- Main Js -->
+</body>
+</html>
