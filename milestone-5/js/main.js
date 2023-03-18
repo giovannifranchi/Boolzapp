@@ -198,12 +198,14 @@ createApp({
             newMessage: '',
             searchedInput: '',
             hasClicked: false,
+            slide: false,
             hasClikedIndex: '',
         }
     },
     methods: {
         changeActiveContact(index){
             this.activeContact = index;
+            this.slide = true;
         },
         sendMessageAndResponse(){
             if(this.newMessage.trim() !== ''){
@@ -241,6 +243,9 @@ createApp({
             this.contacts[this.activeContact].messages.splice(index, 1);
             this.hasClickedIndex = '';
             this.hasClicked = false;
+        },
+        removeSlide(){
+            this.slide = false;
         }
     }
 }).mount('#app');

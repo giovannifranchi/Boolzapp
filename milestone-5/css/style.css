@@ -1,4 +1,5 @@
 @import url(utilities.css);
+@import url(queries.css);
 
 /* 
 ------------------
@@ -401,8 +402,39 @@ Main App section
     margin-top: 300px;
 }
 
+.back-arrow {
+    display: none;
+}
+
+.back-arrow:hover {
+    opacity: 1;
+}
 
 
 
+@media screen and (max-width: 769px) {
+    #aside-app {
+        width: 100%;
+        transition: width .4s ease-in-out;
+    }
+    #main-app {
+        width: 0%;
+        overflow: hidden;
+        transition: width .4s ease-in-out;
+    }
+    #aside-app.slide{
+        width: 0%;
+    }
+    
+    #main-app.slide{
+        width: 100%;
+    }
 
-
+    .back-arrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        opacity: 0.7;
+    }
+}
