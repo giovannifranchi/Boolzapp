@@ -19,7 +19,7 @@
 </head>
 <body>
     <!-- Vue app div -->
-    <div id="app">
+    <div id="app" v-cloak>
         <!-- Background Header -->
         <header id="background-header" @click="dropDown('')"></header>
         <!-- /Background Header -->
@@ -127,11 +127,11 @@
                     <header id="header-main">
                         <div class="left-area d-flex">
                             <div class="main-users-img">
-                                <img :src="contacts[activeContact].avatar" :alt="contacts[activeContact].name" class="img-fluid">
+                                <img :src="searchContacts()[activeContact].avatar" :alt="searchContacts()[activeContact].name" class="img-fluid">
                             </div>
                             <div class="contact-info d-flex justify-center flex-column">
-                                <h3 class="contact-name">{{contacts[activeContact].name}}</h3>
-                                <span class="contacts-last-msg">ultimo messaggio inviato alle {{handleDate(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)}}</span>
+                                <h3 class="contact-name">{{searchContacts()[activeContact].name}}</h3>
+                                <span class="contacts-last-msg">ultimo messaggio inviato alle {{handleDate(searchContacts()[activeContact].messages[searchContacts()[activeContact].messages.length - 1].date)}}</span>
                             </div>
                         </div>
                         <!-- Header Options -->
@@ -157,7 +157,7 @@
                     <!-- Header Main -->
                     <!-- Main Main App -->
                     <main id="main-main-app">
-                        <div class="message  d-flex" v-for="(message, index) in contacts[activeContact].messages" :class="(message.status === 'received') ? 'received': 'sent'">
+                        <div class="message  d-flex" v-for="(message, index) in searchContacts()[activeContact].messages" :class="(message.status === 'received') ? 'received': 'sent'">
                             <span class="message-text">{{message.message}}</span>
                             <div class="right-area-message">
                                 <a href="#" @click.stop="dropDown(index)">

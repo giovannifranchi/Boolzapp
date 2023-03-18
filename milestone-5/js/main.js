@@ -219,7 +219,7 @@ createApp({
         searchContacts(){
             if(this.searchedInput !== ''){
                 return this.contacts.filter((contact)=> {
-                     return contact.name.toLowerCase().includes(this.searchedInput.toLowerCase());
+                    return contact.name.toLowerCase().includes(this.searchedInput.toLowerCase());
                 });
             }else {
                 return this.contacts;
@@ -246,5 +246,7 @@ createApp({
         }
     }
 }).mount('#app');
+
+
 
 
