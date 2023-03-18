@@ -1,5 +1,5 @@
 @import url(utilities.css);
-@import url(queries.css);
+
 
 /* 
 ------------------
@@ -409,6 +409,8 @@ Main App section
 .back-arrow:hover {
     opacity: 1;
 }
+
+
 
 
 
