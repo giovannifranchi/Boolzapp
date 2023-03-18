@@ -163,6 +163,24 @@ const contacts =  [
     }
 ];
 
+const randomWords = [
+    'tutto bene e tu?',
+    'non ci sono stasera, mi spiace?',
+    'hai visto Claudia?',
+    'tornerò per le 8',
+    'mi manca un ultimo esame', 
+    'ho visto il tuo messaggio solo ora',
+    'peccato non essere venuti',
+    'ci vediamo a Lisbona',
+    'quando torni da Berlino?',
+    'hai visto la partita ieri?',
+    'non contatemi per domani',
+];
+
+function createRandomNum(min, max){
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 class Message {
     constructor(date, message, status){
         this.date = date;
@@ -175,6 +193,7 @@ createApp({
     data(){
         return {
             contacts: contacts,
+            randomAnswers: randomWords,
             activeContact: 0,
             newMessage: '',
             searchedInput: '',
@@ -192,7 +211,8 @@ createApp({
                 this.contacts[this.activeContact].messages.push(new Message(today, this.newMessage, 'sent'));
                 this.newMessage = '';
                 setTimeout(()=>{
-                    this.contacts[this.activeContact].messages.push(new Message(today, 'ok', 'received'));
+                    this.contacts[this.activeContact].messages
+                    .push(new Message(today, this.randomAnswers[createRandomNum(0, this.randomAnswers.length - 1)], 'received'));
                 }, 1000);
             }
         },
