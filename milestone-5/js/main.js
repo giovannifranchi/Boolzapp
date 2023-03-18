@@ -232,11 +232,9 @@ createApp({
             this.hasClikedIndex = index;
             if(!this.hasClicked && index !== ''){
                 this.hasClicked = true;
-                console.log(this.hasClicked)
             }else{
                 this.hasClicked = false;
                 this.hasClickedIndex = '';
-                console.log(this.hasClicked)
             }
         },
         deleteMeesage(index){

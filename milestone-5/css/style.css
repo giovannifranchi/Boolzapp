@@ -205,10 +205,15 @@ Aside Contacts
     overflow-y: auto;
 }
 
-.contacts-item {
+.contacts-item{
     padding: 15px;
     background-color: #fff;
     border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+
+.contacts-container > .contacts-list > .contacts-item:not(.active-contact):hover {
+    background-color: rgb(230, 229, 229);
 }
 
 .contact-img-container {
