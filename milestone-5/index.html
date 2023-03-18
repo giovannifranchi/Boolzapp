@@ -113,11 +113,11 @@
                     <header id="header-main">
                         <div class="left-area d-flex">
                             <div class="main-users-img">
-                                <img src="img/avatar_1.jpg" alt="avatar 1" class="img-fluid">
+                                <img :src="contacts[activeContact].avatar" :alt="contacts[activeContact].name" class="img-fluid">
                             </div>
                             <div class="contact-info d-flex justify-center flex-column">
-                                <h3 class="contact-name">Michele</h3>
-                                <span class="contacts-last-msg">ultimo messaggio inviato</span>
+                                <h3 class="contact-name">{{contacts[activeContact].name}}</h3>
+                                <span class="contacts-last-msg">ultimo messaggio inviato alle {{handleDate(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)}}</span>
                             </div>
                         </div>
                         <!-- Header Options -->
