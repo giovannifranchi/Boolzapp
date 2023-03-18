@@ -212,7 +212,7 @@ Aside Contacts
     cursor: pointer;
 }
 
-.contacts-container > .contacts-list > .contacts-item:not(.active-contact):hover {
+.contacts-item:not(.active-contact):hover {
     background-color: rgb(230, 229, 229);
 }
 
