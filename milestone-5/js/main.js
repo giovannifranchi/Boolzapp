@@ -194,7 +194,7 @@ createApp({
         return {
             contacts: contacts,
             randomAnswers: randomWords,
-            activeContact: 0,
+            activeContact: '',
             newMessage: '',
             searchedInput: '',
             hasClicked: false,
