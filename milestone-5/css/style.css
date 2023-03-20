@@ -258,6 +258,7 @@ Aside Contacts
 
 .message-time {
     padding: 0 10px;
+    flex-shrink: 0;
     width: auto;
     text-align: right;
     font-size: 12px;
