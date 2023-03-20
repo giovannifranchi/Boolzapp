@@ -85,7 +85,7 @@
                         <!-- /Search Contacts -->
                         <div class="contacts-container">
                             <!-- Contacts List -->
-                            <ul class="contacts-list">
+                            <ul class="contacts-list" v-if="searchContacts().length > 0">
                                 <!-- Contacts Item -->
                                 <li class="contacts-item d-flex" v-for="(item, index) in contacts" @click="changeActiveContact(index)" :class="searchContacts().includes(item) ? '': 'hide', index === activeContact ? 'active-contact': ''">
                                     <div class="contact-img-container">
@@ -104,6 +104,9 @@
                                 </li>
                             <!-- /Contacts List -->
                             </ul>
+                            <div  class="empty-list" v-else>
+                                Non ci sono contatti in lista 
+                            </div>
                         </div>
                         <!-- Contacts List -->
                     </main>
