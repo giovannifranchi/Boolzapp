@@ -207,6 +207,8 @@ Aside Contacts
 }
 
 .contacts-item{
+    align-items: center;
+    height: 100px;
     padding: 15px;
     background-color: #fff;
     border-bottom: 1px solid lightgray;
@@ -226,6 +228,16 @@ Aside Contacts
 .contact-info {
     flex-grow: 1;
     padding: 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contacts-last-msg {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contact-info span {
@@ -420,6 +432,12 @@ Main App section
     align-items: center;
     justify-content: center;
     padding: 20px;
+}
+
+@media screen and (max-width: 425px) {
+    .contacts-last-msg{
+        width: 100px;
+    }
 }
 
 
