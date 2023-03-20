@@ -226,6 +226,13 @@ createApp({
                 }, 1000);
             }
         },
+        checkDayCoincidence(messageDate){
+            const handledDate = messageDate.split(' ')[0];
+            const today = new Date().toLocaleString('en-US', { hour12: false}).replace(', ', ' ').split(' ')[0];
+            if(handledDate  === today){
+                return true;
+            }else return false; 
+        },
         searchContacts(){
             if(this.searchedInput !== ''){
                 console.log(this.searchedInput.toLowerCase());

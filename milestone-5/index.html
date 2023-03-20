@@ -95,8 +95,11 @@
                                         <h3 class="contact-name">{{item.name}}</h3>
                                         <span class="contacts-last-msg">{{item.messages[item.messages.length - 1].message}}</span>
                                     </div>
-                                    <div class="message-time">
+                                    <div class="message-time" v-if="(checkDayCoincidence(item.messages[item.messages.length - 1].date))">
                                         {{handleDate(item.messages[item.messages.length - 1].date)}}
+                                    </div>
+                                    <div class="message-time" v-else>
+                                        {{ item.messages[item.messages.length - 1].date.substring(0, 16) }}
                                     </div>
                                 </li>
                             <!-- /Contacts List -->
