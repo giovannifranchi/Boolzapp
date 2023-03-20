@@ -198,6 +198,7 @@ createApp({
             newMessage: '',
             searchedInput: '',
             hasClicked: false,
+            displayDeleteOptions: false,
             slide: false,
             hasClikedIndex: '',
             isWriting: false,
@@ -273,6 +274,22 @@ createApp({
         removeSlide(){
             this.slide = false;
         }, 
+        deleteDisplay(){
+            if(this.displayDeleteOptions){
+                this.displayDeleteOptions = false;
+            }else{
+                this.displayDeleteOptions = true;
+            }
+        },
+        deleteHide(){
+            this.displayDeleteOptions = false;
+        },
+        deleteMessages(){
+            this.contacts[this.activeContact].messages.splice(0, this.contacts[this.activeContact].messages.length);
+        },
+        deleteChat(){
+            this.contacts.splice(this.activeContact, 1);
+        }
     }
 }).mount('#app');
 

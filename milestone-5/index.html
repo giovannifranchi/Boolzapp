@@ -21,10 +21,10 @@
     <!-- Vue app div -->
     <div id="app" v-cloak>
         <!-- Background Header -->
-        <header id="background-header" @click="dropDown('')"></header>
+        <header id="background-header" @click="dropDown(''), deleteHide()"></header>
         <!-- /Background Header -->
         <!-- Background Main -->
-        <main id="background-main" @click="dropDown('')">
+        <main id="background-main" @click="dropDown(''), deleteHide()">
             <!-- App Container -->
             <div class="app-container">
                 <!-- Aside -->
@@ -93,9 +93,13 @@
                                     </div>
                                     <div class="contact-info">
                                         <h3 class="contact-name">{{item.name}}</h3>
-                                        <span class="contacts-last-msg">{{item.messages[item.messages.length - 1].message}}</span>
+                                        <span v-if="item.messages.length > 0" class="contacts-last-msg">{{item.messages[item.messages.length - 1].message}}</span>
+                                        <span v-else ></span>
                                     </div>
-                                    <div class="message-time" v-if="(checkDayCoincidence(item.messages[item.messages.length - 1].date))">
+                                    <div class="message-time" v-if="item.messages.length === 0">
+                                        
+                                    </div>
+                                    <div class="message-time" v-else-if="(checkDayCoincidence(item.messages[item.messages.length - 1].date))">
                                         {{handleDate(item.messages[item.messages.length - 1].date)}}
                                     </div>
                                     <div class="message-time" v-else>
@@ -141,7 +145,8 @@
                             </div>
                             <div class="contact-info d-flex justify-center flex-column">
                                 <h3 class="contact-name">{{contacts[activeContact].name}}</h3>
-                                <span v-if="!checkDayCoincidence(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)" class="contacts-last-msg">Ultimo messaggio inviato il {{contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date.substring(0, 10)}}</span>
+                                <span v-if="contacts[activeContact].messages.length === 0"></span>
+                                <span v-else-if="!checkDayCoincidence(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)" class="contacts-last-msg">Ultimo messaggio inviato il {{contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date.substring(0, 10)}}</span>
                                 <span v-else-if="isWriting" class="contacts-last-msg">Sta scrivendo...</span>
                                 <span v-else-if="isOnline" class="contacts-last-msg">Online</span>
                                 <span v-else class="contacts-last-msg">ultimo messaggio inviato alle {{handleDate(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)}}</span>
@@ -159,17 +164,25 @@
                                     <i class="fa-solid fa-paperclip"></i>
                                 </a>
                             </li>
-                            <li class="header-option">
-                                <a href="#">
+                            <li class="header-option delete">
+                                <a href="#" @click.stop="deleteDisplay()">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </a>
+                                <ul class="delete-options" :class="displayDeleteOptions ? 'active': ''">
+                                    <li class="delete-messages" @click="deleteMessages()">
+                                        Cancella Messaggi
+                                    </li>
+                                    <li class="delete-chat" @click="deleteChat()">
+                                        Cancella Chat
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         <!-- /Header Options -->
                     </header>
                     <!-- Header Main -->
                     <!-- Main Main App -->
-                    <main id="main-main-app">
+                    <main id="main-main-app" v-if="contacts[activeContact].messages.length > 0">
                         <div class="message  d-flex" v-for="(message, index) in contacts[activeContact].messages" :class="(message.status === 'received') ? 'received': 'sent'">
                             <span class="message-text">{{message.message}}</span>
                             <div class="right-area-message">
@@ -184,6 +197,8 @@
                                 <span class="message-time">{{handleDate(message.date)}}</span>
                             </div>
                         </div>
+                    </main>
+                    <main id="main-main-app" v-else>
                     </main>
                     <!-- /Main Main App -->
                     <!-- Footer Main -->

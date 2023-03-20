@@ -125,6 +125,30 @@ Aside Contacts
     font-size: 1.25rem;
 }
 
+.header-option.delete {
+    position: relative;
+}
+
+.delete-options {
+    position: absolute;
+    background-color: #fff;
+    top: 25px;
+    right: 5px;
+    z-index: 30;
+    border-radius: 5px;
+    display: none;
+}
+
+.delete-options > * {
+    border-bottom: 1px solid lightgrey;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.delete-options > *:hover{
+    background-color: #d1d4d4;
+}
+
 .not-ban-area {
     height: 6.25rem;
     padding: 1.25rem;
