@@ -181,13 +181,13 @@ function createRandomNum(min, max){
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-class Message {
-    constructor(date, message, status){
-        this.date = date;
-        this.message = message;
-        this.status = status;
-    }
-}
+// class Message {
+//     constructor(date, message, status){
+//         this.date = date;
+//         this.message = message;
+//         this.status = status;
+//     }
+// }
 
 createApp({
     data(){
@@ -210,11 +210,19 @@ createApp({
         sendMessageAndResponse(){
             if(this.newMessage.trim() !== ''){
                 const today = new Date().toLocaleString('en-US', { hour12: false}).replace(', ', ' ');
-                this.contacts[this.activeContact].messages.push(new Message(today, this.newMessage, 'sent'));
+                this.contacts[this.activeContact].messages.push({
+                    date: today,
+                    message: this.newMessage,
+                    status: 'sent',
+                });
                 this.newMessage = '';
                 setTimeout(()=>{
                     this.contacts[this.activeContact].messages
-                    .push(new Message(today, this.randomAnswers[createRandomNum(0, this.randomAnswers.length - 1)], 'received'));
+                    .push({
+                        date: today,
+                        message: this.randomAnswers[createRandomNum(0, this.randomAnswers.length - 1)],
+                        status: 'received',
+                    });
                 }, 1000);
             }
         },
