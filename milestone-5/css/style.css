@@ -410,8 +410,9 @@ Main App section
     opacity: 1;
 }
 
-
-
+.hide {
+    display: none;
+}
 
 
 @media screen and (max-width: 769px) {
@@ -427,11 +428,9 @@ Main App section
     #aside-app.slide{
         width: 0%;
     }
-    
     #main-app.slide{
         width: 100%;
     }
-
     .back-arrow {
         display: flex;
         justify-content: center;

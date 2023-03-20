@@ -220,7 +220,9 @@ createApp({
         },
         searchContacts(){
             if(this.searchedInput !== ''){
+                console.log(this.searchedInput.toLowerCase());
                 return this.contacts.filter((contact)=> {
+                    console.log(contact);
                     return contact.name.toLowerCase().includes(this.searchedInput.toLowerCase());
                 });
             }else {
@@ -249,6 +251,15 @@ createApp({
         }
     }
 }).mount('#app');
+
+
+
+
+
+
+
+
+
 
 
 

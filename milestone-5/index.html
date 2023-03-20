@@ -87,7 +87,7 @@
                             <!-- Contacts List -->
                             <ul class="contacts-list">
                                 <!-- Contacts Item -->
-                                <li class="contacts-item d-flex" v-for="(item, index) in searchContacts()" @click="changeActiveContact(index)" :class="(activeContact === index) ? 'active-contact': ''">
+                                <li class="contacts-item d-flex" v-for="(item, index) in contacts" @click="changeActiveContact(index)" :class="searchContacts().includes(item) ? '': 'hide', index === activeContact ? 'active-contact': ''">
                                     <div class="contact-img-container">
                                         <img :src="item.avatar" :alt="item.name" class="img-fluid">
                                     </div>
@@ -131,11 +131,11 @@
                                 <i class="fa-solid fa-arrow-left"></i>
                             </div>
                             <div class="main-users-img">
-                                <img :src="searchContacts()[activeContact].avatar" :alt="searchContacts()[activeContact].name" class="img-fluid">
+                                <img :src="contacts[activeContact].avatar" :alt="contacts[activeContact].name" class="img-fluid">
                             </div>
                             <div class="contact-info d-flex justify-center flex-column">
-                                <h3 class="contact-name">{{searchContacts()[activeContact].name}}</h3>
-                                <span class="contacts-last-msg">ultimo messaggio inviato alle {{handleDate(searchContacts()[activeContact].messages[searchContacts()[activeContact].messages.length - 1].date)}}</span>
+                                <h3 class="contact-name">{{contacts[activeContact].name}}</h3>
+                                <span class="contacts-last-msg">ultimo messaggio inviato alle {{handleDate(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)}}</span>
                             </div>
                         </div>
                         <!-- Header Options -->
@@ -161,7 +161,7 @@
                     <!-- Header Main -->
                     <!-- Main Main App -->
                     <main id="main-main-app">
-                        <div class="message  d-flex" v-for="(message, index) in searchContacts()[activeContact].messages" :class="(message.status === 'received') ? 'received': 'sent'">
+                        <div class="message  d-flex" v-for="(message, index) in contacts[activeContact].messages" :class="(message.status === 'received') ? 'received': 'sent'">
                             <span class="message-text">{{message.message}}</span>
                             <div class="right-area-message">
                                 <a href="#" @click.stop="dropDown(index)">
