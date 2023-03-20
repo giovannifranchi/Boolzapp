@@ -255,7 +255,8 @@ createApp({
             }
         },
         deleteMeesage(index){
-            this.contacts[this.activeContact].messages.splice(index, 1);
+            this.contacts[this.activeContact].messages[index].message = 'Questo messaggio è stato eliminato';
+            this.contacts[this.activeContact].messages[index].deleted = true;
             this.hasClickedIndex = '';
             this.hasClicked = false;
         },

@@ -194,8 +194,11 @@
                             <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessageAndResponse">
                         </div>
                         <div class="right-area">
-                            <a href="#">
+                            <a href="#" v-if="newMessage.trim() === ''">
                                 <i class="fa-solid fa-microphone"></i>
+                            </a>
+                            <a href="#" v-else @click="sendMessageAndResponse()">
+                                <i class="fa-regular fa-paper-plane"></i>
                             </a>
                         </div>
                     </footer>
