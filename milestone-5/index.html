@@ -141,7 +141,10 @@
                             </div>
                             <div class="contact-info d-flex justify-center flex-column">
                                 <h3 class="contact-name">{{contacts[activeContact].name}}</h3>
-                                <span class="contacts-last-msg">ultimo messaggio inviato alle {{handleDate(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)}}</span>
+                                <span v-if="!checkDayCoincidence(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)" class="contacts-last-msg">Ultimo messaggio inviato il {{contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date.substring(0, 10)}}</span>
+                                <span v-else-if="isWriting" class="contacts-last-msg">Sta scrivendo...</span>
+                                <span v-else-if="isOnline" class="contacts-last-msg">Online</span>
+                                <span v-else class="contacts-last-msg">ultimo messaggio inviato alle {{handleDate(contacts[activeContact].messages[contacts[activeContact].messages.length - 1].date)}}</span>
                             </div>
                         </div>
                         <!-- Header Options -->

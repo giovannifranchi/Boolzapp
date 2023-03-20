@@ -200,6 +200,8 @@ createApp({
             hasClicked: false,
             slide: false,
             hasClikedIndex: '',
+            isWriting: false,
+            isOnline: false,
         }
     },
     methods: {
@@ -216,14 +218,22 @@ createApp({
                     status: 'sent',
                 });
                 this.newMessage = '';
+                this.isWriting = true;
                 setTimeout(()=>{
+                    this.isWriting = false;
                     this.contacts[this.activeContact].messages
                     .push({
                         date: today,
                         message: this.randomAnswers[createRandomNum(0, this.randomAnswers.length - 1)],
                         status: 'received',
                     });
-                }, 1000);
+                }, 3000);
+                setTimeout(()=>{
+                    this.isOnline = true;
+                }, 3000);
+                setTimeout(()=>{
+                    this.isOnline = false;
+                }, 7000);
             }
         },
         checkDayCoincidence(messageDate){
@@ -262,7 +272,7 @@ createApp({
         },
         removeSlide(){
             this.slide = false;
-        }
+        }, 
     }
 }).mount('#app');
 
